@@ -15,3 +15,5 @@ Next: leaflet-draw for polygons, pytest suite, 10k-point benchmark with EXPLAIN 
 
 
 Database: PostgreSQL 16+ PostGIS, db "places", user "app"
+
+-[x] Auth:signup,login,bcrypt,JWT 
