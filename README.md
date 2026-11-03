@@ -12,3 +12,6 @@ Env vars: `DATABASE_URL`, `JWT_SECRET` (set a real secret in production), fronte
 Done: auth (bcrypt+JWT), CRUD, filter, GeoJSON API, nearby (ST_DWithin), distance (geolocation), bulk import, clustering, spatial index (GiST).
 Skipped: polygon search UI (endpoint `/places/within` exists), tests, deploy.
 Next: leaflet-draw for polygons, pytest suite, 10k-point benchmark with EXPLAIN ANALYZE.
+
+
+Database: PostgreSQL 16+ PostGIS, db "places", user "app"
