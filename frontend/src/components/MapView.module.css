@@ -1,10 +1,1 @@
-.page { height: 100vh; display: flex; flex-direction: column; }
-.mapWrap { flex: 1; position: relative; }
-.simpleBar {
-  padding: 10px 16px; display: flex; gap: 12px; align-items: center;
-  background: var(--nav);
-}
-.simpleBar button { margin-left: auto; background: transparent; border: 1px solid #475569; }
-.simpleBar button:hover { background: #1e293b; }
-.msg { background: #fee2e2; color: #991b1b; padding: 4px 12px; border-radius: 999px; font-size: 13px; }
-.note { padding: 16px; }
+.map { height: 100%; width: 100%; }

@@ -15,7 +15,7 @@ export default function LoginForm({ onAuth }) {
       const r = await api(mode === "login" ? "/auth/login" : "/auth/signup", {
         method: "POST",
         body: JSON.stringify(f),
-      });   
+      });
       localStorage.setItem("token", r.token);
       onAuth();
     } catch (e) {

@@ -22,3 +22,4 @@ Database: PostgreSQL 16+ PostGIS, db "places", user "app"
 -[x] Nearby search endpoint
 -[x] Auth: signup,login,logout(bcrypt+JWT)
 -[x] Leaflet map with OpenStreetMap titles
+-[x] Add ,edit,delete places ; category filter
