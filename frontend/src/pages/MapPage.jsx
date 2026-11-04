@@ -3,6 +3,7 @@ import { api } from "../api.js";
 import Toolbar from "../components/Toolbar.jsx";
 import MapView from "../components/MapView.jsx";
 import PlaceForm from "../components/PlaceForm.jsx";
+import NearbyPanel from "../components/NearbyPanel.jsx";
 import styles from "./MapPage.module.css";
 
 export default function MapPage({ onLogout }) {
@@ -11,6 +12,11 @@ export default function MapPage({ onLogout }) {
   const [draft, setDraft] = useState(null);
   const [form, setForm] = useState({ name: "", category: "restaurant", description: "" });
   const [cat, setCat] = useState("");
+  const [mode, setMode] = useState("add"); // "add" | "nearby"
+  const [km, setKm] = useState(1);
+  const [nearby, setNearby] = useState(null);
+  const [center, setCenter] = useState(null);
+  const [me, setMe] = useState(null);
 
   const load = async () => {
     try {
@@ -20,9 +26,21 @@ export default function MapPage({ onLogout }) {
 
   useEffect(() => { load(); }, [cat]);
 
+  useEffect(() => {
+    navigator.geolocation?.getCurrentPosition((p) => setMe([p.coords.latitude, p.coords.longitude]));
+  }, []);
+
+  const changeMode = (m) => { setMode(m); setNearby(null); setCenter(null); setDraft(null); };
 
   const onMapClick = async (ll) => {
     setMsg("");
+    if (mode === "nearby") {
+      try {
+        setCenter(ll);
+        setNearby((await api(`/places/nearby?lat=${ll.lat}&lng=${ll.lng}&km=${km}`)).features);
+      } catch (e) { setMsg(e.message); }
+      return;
+    }
     setDraft(ll);
   };
 
@@ -58,6 +76,18 @@ export default function MapPage({ onLogout }) {
     catch (e) { setMsg(e.message); }
   };
 
+  const upload = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const fd = new FormData();
+    fd.append("file", file);
+    try {
+      const r = await api("/places/import", { method: "POST", body: fd });
+      setMsg(`Imported ${r.added}, rejected ${r.rejected}`);
+      load();
+    } catch (e) { setMsg(e.message); }
+    e.target.value = "";
+  };
 
   const logout = () => { localStorage.removeItem("token"); onLogout(); };
 
@@ -66,6 +96,11 @@ export default function MapPage({ onLogout }) {
       <Toolbar
         cat={cat}
         setCat={setCat}
+        mode={mode}
+        setMode={changeMode}
+        km={km}
+        setKm={setKm}
+        onImport={upload}
         onLogout={logout}
         msg={msg}
       />
@@ -77,8 +112,12 @@ export default function MapPage({ onLogout }) {
           onMapClick={onMapClick}
           onEdit={edit}
           onDelete={del}
+          center={center}
+          km={km}
+          me={me}
         />
         {draft && <PlaceForm form={form} setForm={setForm} onSave={save} onCancel={() => setDraft(null)} />}
+        {nearby && <NearbyPanel results={nearby} km={km} />}
       </div>
     </div>
   );

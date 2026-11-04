@@ -1,3 +1,7 @@
-.popup p { margin: 4px 0; }
-.cat { color: #666; }
-.actions { margin-top: 6px; display: flex; gap: 6px; }
+.popup { min-width: 170px; font-size: 14px; }
+.popup p { margin: 6px 0; color: #334155; }
+.cat { color: var(--muted); font-size: 12px; text-transform: capitalize; }
+.actions { margin-top: 10px; display: flex; gap: 8px; }
+.actions button { padding: 5px 12px; font-size: 13px; }
+.actions button:last-child { background: var(--danger); }
+.actions button:last-child:hover { background: var(--danger-dark); }

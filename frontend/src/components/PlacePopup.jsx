@@ -6,6 +6,7 @@ export default function PlacePopup({ feature, distance, onEdit, onDelete }) {
     <div className={styles.popup}>
       <b>{p.name}</b> <span className={styles.cat}>({p.category})</span>
       <p>{p.description}</p>
+      <i>{distance}</i>
       <div className={styles.actions}>
         <button onClick={() => onEdit(feature)}>Edit</button>
         <button onClick={() => onDelete(feature)}>Delete</button>

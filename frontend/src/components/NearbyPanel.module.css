@@ -1,0 +1,8 @@
+.panel {
+  position: absolute; bottom: 24px; left: 16px; z-index: 1000; width: 280px;
+  max-height: 220px; overflow: auto; padding: 14px;
+  background: #fff; border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, .25);
+}
+.panel b { display: block; margin-bottom: 8px; }
+.panel div { padding: 6px 0; border-top: 1px solid #e2e8f0; font-size: 14px; }
