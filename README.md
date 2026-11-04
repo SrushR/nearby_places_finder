@@ -20,3 +20,5 @@ Database: PostgreSQL 16+ PostGIS, db "places", user "app"
 -[x]Places CRUD with GeoJSON API 
 -[x] Nearby search (PostGIS ST_DWithin)
 -[x] Nearby search endpoint
+-[x] Auth: signup,login,logout(bcrypt+JWT)
+-[x] Leaflet map with OpenStreetMap titles
