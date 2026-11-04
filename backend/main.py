@@ -5,14 +5,14 @@ import bcrypt, jwt
 from fastapi import FastAPI, Depends, HTTPException, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
-from pydantic import BaseModel, EmailStr, Field
+from pydantic import BaseModel, EmailStr, Field, field_validator
 from sqlalchemy import create_engine, Column, Integer, String, Text, ForeignKey, func
 from sqlalchemy.orm import sessionmaker, declarative_base, Session
 from geoalchemy2 import Geography
 from geoalchemy2.shape import to_shape
 
 DB_URL = os.getenv("DATABASE_URL", "postgresql+psycopg2://app:app@localhost:5432/places")
-SECRET = os.getenv("JWT_SECRET", "dev-secret")
+SECRET = os.getenv("JWT_SECRET", "dev-secret-change-me-use-at-least-32-characters")
 CATEGORIES = {"hospital", "school", "restaurant", "shop"}
 
 engine = create_engine(DB_URL)
@@ -80,6 +80,14 @@ class PlaceIn(BaseModel):
     description: str = ""
     lat: float = Field(ge=-90, le=90)
     lng: float = Field(ge=-180, le=180)
+
+    @field_validator("name")
+    @classmethod
+    def name_not_blank(cls, v):
+        v = v.strip()
+        if not v:
+            raise ValueError("Name cannot be empty")
+        return v
 
 class PolygonIn(BaseModel):
     coordinates: List[List[List[float]]]  # GeoJSON polygon coordinates
@@ -166,9 +174,13 @@ def nearby(lat: float, lng: float, km: float = 1, db: Session = Depends(get_db),
 
 @app.post("/places/within")
 def within(poly: PolygonIn, db: Session = Depends(get_db), user: User = Depends(current_user)):
-    geojson = json.dumps({"type": "Polygon", "coordinates": poly.coordinates})
-    area = func.ST_GeogFromText(func.concat("SRID=4326;", func.ST_AsText(func.ST_GeomFromGeoJSON(geojson))))
-    rows = own(db, user).filter(func.ST_Covers(area, Place.geom)).all()
+    try:
+        geojson = json.dumps({"type": "Polygon", "coordinates": poly.coordinates})
+        area = func.ST_GeogFromText(func.concat("SRID=4326;", func.ST_AsText(func.ST_GeomFromGeoJSON(geojson))))
+        rows = own(db, user).filter(func.ST_Covers(area, Place.geom)).all()
+    except Exception:
+        db.rollback()
+        raise HTTPException(422, "Invalid polygon")
     return collection([feature(p) for p in rows])
 
 @app.post("/places/import")
@@ -188,6 +200,7 @@ async def import_places(file: UploadFile = File(...), db: Session = Depends(get_
         raise HTTPException(400, "Could not parse file")
     added = 0
     for i, name, cat, desc, lat, lng in items:
+        cat = (cat or "").strip().lower()
         try:
             lat, lng = float(lat), float(lng)
             assert -90 <= lat <= 90 and -180 <= lng <= 180 and name and cat in CATEGORIES

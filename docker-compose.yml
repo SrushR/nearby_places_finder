@@ -1,0 +1,24 @@
+services:
+  db:
+    image: postgis/postgis:16-3.4
+    environment:
+      POSTGRES_DB: places
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: app
+    ports: ["5432:5432"]
+    volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U app -d places"]
+      interval: 5s
+      retries: 10
+  api:
+    build: ./backend
+    environment:
+      DATABASE_URL: postgresql+psycopg2://app:app@db:5432/places
+      JWT_SECRET: ${JWT_SECRET:-change-me}
+    ports: ["8000:8000"]
+    depends_on:
+      db:
+        condition: service_healthy
+volumes:
+  pgdata:

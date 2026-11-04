@@ -1,0 +1,605 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.783502,
+          18.53952
+        ]
+      },
+      "properties": {
+        "name": "Sample Hospital 1",
+        "category": "hospital",
+        "description": "Sample hospital for testing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.81125,
+          18.488504
+        ]
+      },
+      "properties": {
+        "name": "Sample School 1",
+        "category": "school",
+        "description": "Sample school for testing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.874738,
+          18.553106
+        ]
+      },
+      "properties": {
+        "name": "Sample Restaurant 1",
+        "category": "restaurant",
+        "description": "Sample restaurant for testing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.792171,
+          18.574905
+        ]
+      },
+      "properties": {
+        "name": "Sample Shop 1",
+        "category": "shop",
+        "description": "Sample shop for testing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.784172,
+          18.509069
+        ]
+      },
+      "properties": {
+        "name": "Sample Hospital 2",
+        "category": "hospital",
+        "description": "Sample hospital for testing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.85075,
+          18.480609
+        ]
+      },
+      "properties": {
+        "name": "Sample School 2",
+        "category": "school",
+        "description": "Sample school for testing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.807837,
+          18.453715
+        ]
+      },
+      "properties": {
+        "name": "Sample Restaurant 2",
+        "category": "restaurant",
+        "description": "Sample restaurant for testing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.856292,
+          18.540984
+        ]
+      },
+      "properties": {
+        "name": "Sample Shop 2",
+        "category": "shop",
+        "description": "Sample shop for testing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.862497,
+          18.480862
+        ]
+      },
+      "properties": {
+        "name": "Sample Hospital 3",
+        "category": "hospital",
+        "description": "Sample hospital for testing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.78091,
+          18.56332
+        ]
+      },
+      "properties": {
+        "name": "Sample School 3",
+        "category": "school",
+        "description": "Sample school for testing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.87774,
+          18.562815
+        ]
+      },
+      "properties": {
+        "name": "Sample Restaurant 3",
+        "category": "restaurant",
+        "description": "Sample restaurant for testing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.801767,
+          18.497635
+        ]
+      },
+      "properties": {
+        "name": "Sample Shop 3",
+        "category": "shop",
+        "description": "Sample shop for testing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.827123,
+          18.58401
+        ]
+      },
+      "properties": {
+        "name": "Sample Hospital 4",
+        "category": "hospital",
+        "description": "Sample hospital for testing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.79354,
+          18.462984
+        ]
+      },
+      "properties": {
+        "name": "Sample School 4",
+        "category": "school",
+        "description": "Sample school for testing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.864522,
+          18.568649
+        ]
+      },
+      "properties": {
+        "name": "Sample Restaurant 4",
+        "category": "restaurant",
+        "description": "Sample restaurant for testing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.882162,
+          18.562998
+        ]
+      },
+      "properties": {
+        "name": "Sample Shop 4",
+        "category": "shop",
+        "description": "Sample shop for testing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.916236,
+          18.525072
+        ]
+      },
+      "properties": {
+        "name": "Sample Hospital 5",
+        "category": "hospital",
+        "description": "Sample hospital for testing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.857286,
+          18.502995
+        ]
+      },
+      "properties": {
+        "name": "Sample School 5",
+        "category": "school",
+        "description": "Sample school for testing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.866593,
+          18.566117
+        ]
+      },
+      "properties": {
+        "name": "Sample Restaurant 5",
+        "category": "restaurant",
+        "description": "Sample restaurant for testing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.860829,
+          18.570639
+        ]
+      },
+      "properties": {
+        "name": "Sample Shop 5",
+        "category": "shop",
+        "description": "Sample shop for testing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.786415,
+          18.54864
+        ]
+      },
+      "properties": {
+        "name": "Sample Hospital 6",
+        "category": "hospital",
+        "description": "Sample hospital for testing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.820514,
+          18.481906
+        ]
+      },
+      "properties": {
+        "name": "Sample School 6",
+        "category": "school",
+        "description": "Sample school for testing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.812591,
+          18.461171
+        ]
+      },
+      "properties": {
+        "name": "Sample Restaurant 6",
+        "category": "restaurant",
+        "description": "Sample restaurant for testing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.818916,
+          18.46414
+        ]
+      },
+      "properties": {
+        "name": "Sample Shop 6",
+        "category": "shop",
+        "description": "Sample shop for testing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.831077,
+          18.538996
+        ]
+      },
+      "properties": {
+        "name": "Sample Hospital 7",
+        "category": "hospital",
+        "description": "Sample hospital for testing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.809331,
+          18.501825
+        ]
+      },
+      "properties": {
+        "name": "Sample School 7",
+        "category": "school",
+        "description": "Sample school for testing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.911132,
+          18.487377
+        ]
+      },
+      "properties": {
+        "name": "Sample Restaurant 7",
+        "category": "restaurant",
+        "description": "Sample restaurant for testing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.865278,
+          18.540725
+        ]
+      },
+      "properties": {
+        "name": "Sample Shop 7",
+        "category": "shop",
+        "description": "Sample shop for testing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.882078,
+          18.473959
+        ]
+      },
+      "properties": {
+        "name": "Sample Hospital 8",
+        "category": "hospital",
+        "description": "Sample hospital for testing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.833124,
+          18.472876
+        ]
+      },
+      "properties": {
+        "name": "Sample School 8",
+        "category": "school",
+        "description": "Sample school for testing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.8696,
+          18.588533
+        ]
+      },
+      "properties": {
+        "name": "Sample Restaurant 8",
+        "category": "restaurant",
+        "description": "Sample restaurant for testing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.875846,
+          18.527973
+        ]
+      },
+      "properties": {
+        "name": "Sample Shop 8",
+        "category": "shop",
+        "description": "Sample shop for testing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.88864,
+          18.567999
+        ]
+      },
+      "properties": {
+        "name": "Sample Hospital 9",
+        "category": "hospital",
+        "description": "Sample hospital for testing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.784494,
+          18.482067
+        ]
+      },
+      "properties": {
+        "name": "Sample School 9",
+        "category": "school",
+        "description": "Sample school for testing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.817484,
+          18.494163
+        ]
+      },
+      "properties": {
+        "name": "Sample Restaurant 9",
+        "category": "restaurant",
+        "description": "Sample restaurant for testing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.912007,
+          18.479538
+        ]
+      },
+      "properties": {
+        "name": "Sample Shop 9",
+        "category": "shop",
+        "description": "Sample shop for testing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.824055,
+          18.572691
+        ]
+      },
+      "properties": {
+        "name": "Sample Hospital 10",
+        "category": "hospital",
+        "description": "Sample hospital for testing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.835388,
+          18.541761
+        ]
+      },
+      "properties": {
+        "name": "Sample School 10",
+        "category": "school",
+        "description": "Sample school for testing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.844239,
+          18.578037
+        ]
+      },
+      "properties": {
+        "name": "Sample Restaurant 10",
+        "category": "restaurant",
+        "description": "Sample restaurant for testing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.814528,
+          18.487083
+        ]
+      },
+      "properties": {
+        "name": "Sample Shop 10",
+        "category": "shop",
+        "description": "Sample shop for testing"
+      }
+    }
+  ]
+}
