@@ -7,6 +7,7 @@ export default function Toolbar({ mode, setMode, km, setKm, cat, setCat, onImpor
       <select value={mode} onChange={(e) => setMode(e.target.value)}>
         <option value="add">Click = add place</option>
         <option value="nearby">Click = nearby search</option>
+        <option value="polygon">Draw polygon search</option>
       </select>
 
       {mode === "nearby" && (
