@@ -12,7 +12,7 @@ export default function MapPage({ onLogout }) {
   const [draft, setDraft] = useState(null);
   const [form, setForm] = useState({ name: "", category: "restaurant", description: "" });
   const [cat, setCat] = useState("");
-  const [mode, setMode] = useState("add"); // "add" | "nearby"
+  const [mode, setMode] = useState("add"); // "add" | "nearby" | "polygon"
   const [km, setKm] = useState(1);
   const [nearby, setNearby] = useState(null);
   const [center, setCenter] = useState(null);
@@ -30,9 +30,10 @@ export default function MapPage({ onLogout }) {
     navigator.geolocation?.getCurrentPosition((p) => setMe([p.coords.latitude, p.coords.longitude]));
   }, []);
 
-  const changeMode = (m) => { setMode(m); setNearby(null); setCenter(null); setDraft(null); };
+  const changeMode = (m) => { setMode(m); setNearby(null); setCenter(null); setDraft(null); setMsg(""); };
 
   const onMapClick = async (ll) => {
+    if (mode === "polygon") return; // clicks while drawing must not add places
     setMsg("");
     if (mode === "nearby") {
       try {
@@ -42,6 +43,17 @@ export default function MapPage({ onLogout }) {
       return;
     }
     setDraft(ll);
+  };
+
+  const onPolygon = async (ring) => {
+    setMsg("");
+    try {
+      const r = await api("/places/within", {
+        method: "POST",
+        body: JSON.stringify({ coordinates: [ring] }),
+      });
+      setNearby(r.features);
+    } catch (e) { setMsg(e.message); }
   };
 
   const save = async (e) => {
@@ -115,9 +127,11 @@ export default function MapPage({ onLogout }) {
           center={center}
           km={km}
           me={me}
+          drawMode={mode === "polygon"}
+          onPolygon={onPolygon}
         />
         {draft && <PlaceForm form={form} setForm={setForm} onSave={save} onCancel={() => setDraft(null)} />}
-        {nearby && <NearbyPanel results={nearby} km={km} />}
+        {nearby && <NearbyPanel results={nearby} km={km} mode={mode} />}
       </div>
     </div>
   );
