@@ -91,6 +91,7 @@ class PlaceIn(BaseModel):
 
 class PolygonIn(BaseModel):
     coordinates: List[List[List[float]]]  # GeoJSON polygon coordinates
+    category: Optional[str] = None
 
 def feature(p: Place, extra=None):
     pt = to_shape(p.geom)
@@ -175,13 +176,15 @@ def nearby(lat: float, lng: float, km: float = 1, category: Optional[str] = None
     rows = q.add_columns(dist.label("d")).filter(func.ST_DWithin(Place.geom, center, km * 1000)).order_by(dist).all()
     return collection([feature(p, {"distance_m": round(d)}) for p, d in rows])
 
-
 @app.post("/places/within")
 def within(poly: PolygonIn, db: Session = Depends(get_db), user: User = Depends(current_user)):
     try:
         geojson = json.dumps({"type": "Polygon", "coordinates": poly.coordinates})
         area = func.ST_GeogFromText(func.concat("SRID=4326;", func.ST_AsText(func.ST_GeomFromGeoJSON(geojson))))
-        rows = own(db, user).filter(func.ST_Covers(area, Place.geom)).all()
+        q = own(db, user).filter(func.ST_Covers(area, Place.geom))
+        if poly.category:
+            q = q.filter(Place.category == poly.category)
+        rows = q.all()
     except Exception:
         db.rollback()
         raise HTTPException(422, "Invalid polygon")
