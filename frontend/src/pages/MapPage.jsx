@@ -17,6 +17,7 @@ export default function MapPage({ onLogout }) {
   const [nearby, setNearby] = useState(null);
   const [center, setCenter] = useState(null);
   const [me, setMe] = useState(null);
+    const [ring, setRing] = useState(null);
 
   const load = async () => {
     try {
@@ -30,7 +31,7 @@ export default function MapPage({ onLogout }) {
     navigator.geolocation?.getCurrentPosition((p) => setMe([p.coords.latitude, p.coords.longitude]));
   }, []);
 
-  const changeMode = (m) => { setMode(m); setNearby(null); setCenter(null); setDraft(null); setMsg(""); };
+    const changeMode = (m) => { setMode(m); setNearby(null); setCenter(null); setDraft(null); setRing(null); setMsg(""); };
 
   const onMapClick = async (ll) => {
     if (mode === "polygon") return; // clicks while drawing must not add places
@@ -45,16 +46,22 @@ export default function MapPage({ onLogout }) {
     setDraft(ll);
   };
 
-  const onPolygon = async (ring) => {
+    const runPolygon = async (r, category) => {
     setMsg("");
     try {
-      const r = await api("/places/within", {
+      const res = await api("/places/within", {
         method: "POST",
-        body: JSON.stringify({ coordinates: [ring] }),
+        body: JSON.stringify({ coordinates: [r], category: category || null }),
       });
-      setNearby(r.features);
+      setNearby(res.features);
     } catch (e) { setMsg(e.message); }
   };
+
+  const onPolygon = (r) => { setRing(r); runPolygon(r, cat); };
+
+  useEffect(() => {
+    if (mode === "polygon" && ring) runPolygon(ring, cat);
+  }, [cat]);
 
   const save = async (e) => {
     e.preventDefault();
