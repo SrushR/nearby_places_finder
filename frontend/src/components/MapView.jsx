@@ -4,6 +4,7 @@ import "../leafletSetup.js";
 import { DEFAULT_CENTER } from "../constants.js";
 import { distanceText } from "../utils.js";
 import PlacePopup from "./PlacePopup.jsx";
+import DrawControl from "./DrawControl.jsx";
 import styles from "./MapView.module.css";
 
 function ClickHandler({ onClick }) {
@@ -11,11 +12,12 @@ function ClickHandler({ onClick }) {
   return null;
 }
 
-export default function MapView({ places = [], draft = null, center = null, km = 1, me = null, onMapClick, onEdit, onDelete }) {
+export default function MapView({ places = [], draft = null, center = null, km = 1, me = null, drawMode = false, onPolygon, onMapClick, onEdit, onDelete }) {
   return (
     <MapContainer center={DEFAULT_CENTER} zoom={12} className={styles.map}>
       <TileLayer url="https://tile.openstreetmap.org/{z}/{x}/{y}.png" attribution="&copy; OpenStreetMap contributors" />
       <ClickHandler onClick={onMapClick} />
+      {drawMode && <DrawControl onPolygon={onPolygon} />}
 
       <MarkerClusterGroup chunkedLoading>
         {places.map((f) => (
