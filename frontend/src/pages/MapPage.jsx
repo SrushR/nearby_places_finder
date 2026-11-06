@@ -37,7 +37,7 @@ export default function MapPage({ onLogout }) {
     if (mode === "nearby") {
       try {
         setCenter(ll);
-        setNearby((await api(`/places/nearby?lat=${ll.lat}&lng=${ll.lng}&km=${km}`)).features);
+        setNearby((await api(`/places/nearby?lat=${ll.lat}&lng=${ll.lng}&km=${km}${cat ? `&category=${cat}`: ""}`)).features);
       } catch (e) { setMsg(e.message); }
       return;
     }

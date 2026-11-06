@@ -164,13 +164,17 @@ def delete_place(pid: int, db: Session = Depends(get_db), user: User = Depends(c
 
 # ---------- spatial (all done in PostGIS) ----------
 @app.get("/places/nearby")
-def nearby(lat: float, lng: float, km: float = 1, db: Session = Depends(get_db), user: User = Depends(current_user)):
+def nearby(lat: float, lng: float, km: float = 1, category: Optional[str] = None, db: Session = Depends(get_db), user: User = Depends(current_user)):
     if not (-90 <= lat <= 90 and -180 <= lng <= 180) or km <= 0:
         raise HTTPException(422, "Invalid coordinates or radius")
     center = point_wkt(lng, lat)
     dist = func.ST_Distance(Place.geom, center)
-    rows = own(db, user).add_columns(dist.label("d")).filter(func.ST_DWithin(Place.geom, center, km * 1000)).order_by(dist).all()
+    q = own(db, user)
+    if category:
+        q = q.filter(Place.category == category)
+    rows = q.add_columns(dist.label("d")).filter(func.ST_DWithin(Place.geom, center, km * 1000)).order_by(dist).all()
     return collection([feature(p, {"distance_m": round(d)}) for p, d in rows])
+
 
 @app.post("/places/within")
 def within(poly: PolygonIn, db: Session = Depends(get_db), user: User = Depends(current_user)):

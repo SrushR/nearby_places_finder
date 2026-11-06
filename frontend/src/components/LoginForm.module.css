@@ -3,6 +3,25 @@
   display: grid; gap: 14px;
   background: #fff; border-radius: 16px;
   box-shadow: 0 10px 30px rgba(15, 23, 42, .15);
+}.form {
+  max-width: 380px; margin: 10vh auto; padding: 32px;
+  display: grid; gap: 14px;
+  background: #fff; border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, .15);
+}
+.form h2 { margin: 0 0 4px; font-size: 26px; text-align: center; }
+.form button { padding: 11px; }
+.form a { text-align: center; font-size: 14px; }
+.error {
+  background: #fee2e2; color: #991b1b;
+  padding: 8px 12px; border-radius: 8px; font-size: 14px;
+}
+.passWrap { position: relative; display: grid; }
+.passWrap input { padding-right: 44px; }
+.form .eye {
+  position: absolute; right: 6px; top: 50%; transform: translateY(-50%);
+  padding: 4px 8px; background: transparent; border: none;
+  box-shadow: none; cursor: pointer; font-size: 18px; line-height: 1;
 }
 .form h2 { margin: 0 0 4px; font-size: 26px; text-align: center; }
 .form button { padding: 11px; }
